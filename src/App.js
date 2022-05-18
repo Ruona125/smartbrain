@@ -8,6 +8,8 @@ import Rank from "./component/Rank/Rank";
 import FaceRecognition from "./component/FaceRecognition/FaceRecognition";
 import Signin from "./component/signIn/signin";
 import Register from "./component/Register/Register";
+import Modal from "./component/modal/modal";
+import Profile from "./component/profile/profile";
 // const Clarifai = require('clarifai');
 
 const particlesOption = {
@@ -28,6 +30,7 @@ const initialState = {
   boxes: [],
   route: "home",
   isSignedIn: true,
+  isProfileOpen: false,
   user: {
     id: "",
     name: "",
@@ -121,18 +124,36 @@ class App extends React.Component {
     }
     this.setState({ route: route });
   };
+
+  toggleModal = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      isProfileOpen: !prevState.isProfileOpen,
+    }));
+  };
+
   render() {
-    const { isSignedIn, imageUrl, route, boxes } = this.state;
+    const { isSignedIn, imageUrl, route, boxes, isProfileOpen } = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particlesOption} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
+          toggleModal={this.toggleModal}
         />
+        {isProfileOpen && (
+          <Modal>
+            <Profile
+              isProfileOpen={isProfileOpen}
+              toggleModal={this.toggleModal}
+            />
+          </Modal>
+        )}
         {route === "home" ? (
           <div>
             <Logo />
+
             <Rank
               name={this.state.user.name}
               entries={this.state.user.entries}
