@@ -16,39 +16,54 @@ const Profile = ({ isProfileOpen, toggleModal }) => {
           <p>Member since: January</p>
           <hr />
 
-          <div className="mt3">
-            <label className="db fw6 lh-copy f6" htmlFor="name">
-              Name
-            </label>
-            <input
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              type="text"
-              name="name"
-              id="name"
-              // onChange={this.onNameChange}
-            />
-          </div>
+          <label className="mt2 fw6 " htmlFor="user-name">
+            Name:
+          </label>
+          <input
+            className="pa2 ba w-100"
+            placeholder="john"
+            type="text"
+            name="user-name"
+            id="name"
+          />
 
-          <div className="mt3">
-            <input
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              type="email"
-              name="email"
-              id="email"
-              // onChange={this.onEmailChange}
-            />
-          </div>
+          <label className="mt2 fw6 " htmlFor="user-age">
+            Age:
+          </label>
+          <input
+            className="pa2 ba w-100"
+            placeholder="56"
+            type="text"
+            name="user-age"
+            id="age"
+          />
 
-          <div className="mt3">
-            <input
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              type="email"
-              name="email"
-              id="email"
-              // onChange={this.onEmailChange}
-            />
+          <label className="mt2 fw6 " htmlFor="user-name">
+            Pet:
+          </label>
+          <input
+            className="pa2 ba w-100"
+            placeholder="dragon"
+            type="text"
+            name="user-pet"
+            id="pet"
+          />
+          <div
+            className="mt4"
+            style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <button className="b pa2 grow pointer hover-white w-40 bg-light-blue b--black-20">
+              Save
+            </button>
+            <button
+              className="b pa2 grow pointer hover-white w-40 bg-light-red b--black-20"
+              onClick={toggleModal}>
+              Cancel
+            </button>
           </div>
         </main>
+        <div className="modal-close" onClick={toggleModal}>
+          &times;
+        </div>
       </article>
     </div>
   );
