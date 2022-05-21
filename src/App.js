@@ -120,7 +120,7 @@ class App extends React.Component {
 
   onRouteChange = (route) => {
     if (route === "signout") {
-      return this.setState(initialState);
+      this.setState(initialState);
     } else if (route === "home") {
       this.setState({ isSignedIn: true });
     }
@@ -150,6 +150,7 @@ class App extends React.Component {
             <Profile
               isProfileOpen={isProfileOpen}
               toggleModal={this.toggleModal}
+              loadUser={this.loadUser}
               user={user}
             />
           </Modal>
